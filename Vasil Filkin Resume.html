@@ -157,7 +157,7 @@
         }
         #enlarged-text {
             align-items: center;
-            background-color: #4D4D4D; /* dark grayscale */
+            /*background-color: #4D4D4D; /* dark grayscale */
             /*color: yellow;  !* white text color *!*/
             padding: 8px 12px;
             border-radius: 20px;
@@ -176,6 +176,7 @@
             flex-direction: column;
             margin: 0; /* overwrite the margin on small screens */
             padding: 0 10px;  /* give some padding */
+            border: none;  
           }
           .left-column,
           .right-column {
@@ -190,6 +191,7 @@
             flex-direction: column;
             margin: 0;
             padding: 0 5px; /* adjust as needed */
+            border: none;   
           }
           .left-column,
           .right-column {
@@ -207,6 +209,9 @@
           .square-rounded {
             transform: scale(0.8);  /* Keep image size at 80% */
           }
+          .container {
+            border: none;   
+          }  
         }
     </style>
 </head>
