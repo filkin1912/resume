@@ -175,7 +175,7 @@
           .container {
             flex-direction: column;
             margin: 0; /* overwrite the margin on small screens */
-            padding: 0 10px;  /* give some padding */
+            padding: 0;  /* give some padding */
             border: none;  
           }
           .left-column,
@@ -190,7 +190,7 @@
           .container {
             flex-direction: column;
             margin: 0;
-            padding: 0 5px; /* adjust as needed */
+            padding: 0; /* adjust as needed */
             border: none;   
           }
           .left-column,
@@ -210,11 +210,13 @@
             transform: scale(0.8);  /* Keep image size at 80% */
           }
           .container {
+            padding: 0;  
             border: none;   
           }  
         }
         @media only screen and (max-width: 782px) {
             .container {
+                padding: 0;  
                 border: none;
             }
         }
