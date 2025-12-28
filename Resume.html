@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vasil Filkin Resume</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #enlarged-text > p.link-style {
+            color: blue !important;
+            text-decoration: underline;
+            font-weight: 550; /* keep your style */
+        }
+
+        /* Maintain blue link color and underlined style */
+        .link-style {
+            color: blue;
+            text-decoration: underline;
+        }
+
+        .link-style > a {
+            font-weight: 550;
+        }
+
+        /* Italic and black color for .company-info */
+        .company-info {
+            color: black;  /* Change text color to black */
+            font-style: italic;  /* Make text italic */
+            font-size: 1em;
+            margin-bottom: 4px;
+            border: 2px solid #4D8B31;
+            margin-left: 2px;
+        }
+
+        /* Other styles remain unchanged */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: white;  /* Background color white */
+            color: black;  /* Text color black */
+            font-weight: 400;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 16px;          /* ✅ add padding so content doesn’t overlap */
+            box-sizing: border-box;  /* ✅ ensures padding + border are included */
+        }
+
+        body * {
+            color: inherit;
+        }
+
+        .container {
+            min-height: 1780px;
+            padding: 20px;
+            background: white;  /* Background color white */
+            border-radius: 10px;
+            /*box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);*/
+            display: flex;
+            margin: 1vw 1vw;
+            /*border: 2px solid black;  !* Border color black *!*/
+        }
+
+        .left-column {
+            flex: 0 0 18%; /* Fixed width: 15% of container */
+            max-width: 18%;
+            padding-right: 10px;
+            border-right: 2px solid #ccc;
+        }
+
+        .right-column {
+            flex: 0 0 82%; /* Fixed width: 85% of container */
+            max-width: 82%;
+            padding-left: 20px;
+        }
+
+        .section-content {
+            margin-bottom: 8px;
+        }
+
+        .two-columns td {
+            padding-right: 20px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .header p {
+            margin: 0;
+            color: #555;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+        }
+
+        .section-title > span:nth-child(1),
+        .section-title > span:nth-child(2),
+        .section-title > span:nth-child(3) {
+            background-color: #616161;
+        }
+
+        .square-rounded {
+            width: 160px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        .skills, .languages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill, .language {
+            background: #a19c9c;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .project {
+            margin-bottom: 15px;
+        }
+
+        .education {
+            font-weight: 550;
+            text-decoration: underline;
+            padding: 2px 0px;
+            font-size: 1.2rem;
+            margin: 2px 0;
+            line-height: 1.2;
+        }
+
+        .education-section p,
+        .education-section div {
+            margin: 2px 0;
+            padding: 2px 0;
+            line-height: 1.2;
+        }
+        .education-section > * {
+            margin: 4px 0;
+            padding: 2px 0;
+            line-height: 1.2;
+        }
+
+
+
+        .flex-direction-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .flex-direction-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .more-text {
+            /*display: none;*/
+        }
+
+        .large-green-title {
+            font-size: 1.2em;
+            color: #4D8B31;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .link-style-show-more {
+            margin-bottom: 1rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .margin-bottom {
+            margin-bottom: 1rem;
+        }
+
+        .flex-direction-column1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        #enlarged-text > p {
+            color: black;
+            background-color: #a19c9c;
+            margin-bottom: 2px;
+            padding: 2px 8px;
+            border-radius: 2px;
+        }
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(20em, 1fr));
+            grid-auto-rows: calc(100% / 5);
+            grid-gap: 1em;
+        }
+
+        .two-columns li:nth-child(4n+1) {
+            grid-column: 1;
+        }
+
+        #enlarged-text {
+            align-items: center;
+            /*background-color: #b6b6b6;*/
+            color: white;
+            padding: 8px 12px;
+            border-radius: 10px;
+            min-width: 190px;
+            margin: 10px 0;
+        }
+
+        .degreetype {
+            font-weight: normal;
+            font-size: 1rem;
+            color: black;  /* Changed to black */
+        }
+
+        /* For screens smaller than or equal to 600px */
+        @media only screen and (max-width: 600px) {
+            .container {
+                flex-direction: column;
+                margin: 0;
+                padding: 0;
+                border: none;
+            }
+            .left-column,
+            .right-column {
+                flex: none;
+                width: 100%;
+                padding-left: 0px;
+            }
+            #enlarged-text {
+                background-color: black;
+            }
+        }
+
+        /* For screens smaller than or equal to 480px */
+        @media only screen and (max-width: 480px) {
+            .container {
+                flex-direction: column;
+                margin: 0;
+                padding: 0;
+                border: none;
+            }
+            .left-column,
+            .right-column {
+                flex: none;
+                width: 100%;
+                padding-left: 0px;
+            }
+            .square-rounded {
+                transform: scale(0.8);
+            }
+            #enlarged-text {
+                background-color: black;
+            }
+        }
+
+        @media only screen and (max-width: 782px) {
+            .container {
+                border: none;
+                padding: 0;
+            }
+        }
+    </style>
+
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: 'Arial', sans-serif;-->
+<!--            background-color: black;-->
+<!--            color: white;-->
+<!--            font-weight: 400;-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            align-items: center;-->
+<!--            min-height: 100vh; /* ensure the body takes up full viewport height  */-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--        }-->
+<!--        body * {-->
+<!--            color: inherit;-->
+<!--        }-->
+<!--        .container {-->
+<!--            min-height: 1780px;-->
+<!--            padding: 20px;-->
+<!--            background: black;-->
+<!--            border-radius: 10px;-->
+<!--            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);-->
+<!--            display: flex;-->
+<!--            margin: 1vw 1vw;-->
+<!--            border: 2px solid white;-->
+<!--        }-->
+
+<!--        .left-column {-->
+<!--            flex: 0.6;-->
+<!--            padding-right: 20px;-->
+<!--            border-right: 2px solid #ccc;-->
+<!--            max-width: 400px;-->
+<!--        }-->
+
+<!--        .right-column {-->
+<!--            flex: 1.2;-->
+<!--            padding-left: 20px;-->
+<!--        }-->
+
+<!--        .section-content {-->
+<!--            margin-bottom: 8px;-->
+<!--        }-->
+
+<!--        .two-columns td {-->
+<!--            padding-right: 20px;-->
+<!--        }-->
+
+<!--        .header {-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            justify-content: space-between;-->
+<!--        }-->
+
+<!--        .header h1 {-->
+<!--            font-size: 1.8rem;-->
+<!--            margin: 0;-->
+<!--        }-->
+
+<!--        .header p {-->
+<!--            margin: 0;-->
+<!--            color: #555;-->
+<!--        }-->
+
+<!--        .section-title {-->
+<!--            font-size: 1.5em;-->
+<!--            margin-top: 20px;-->
+<!--            margin-bottom: 10px;-->
+<!--            border-bottom: 2px solid #ccc;-->
+<!--            padding-bottom: 5px;-->
+<!--        }-->
+
+<!--        .section-title > span:nth-child(1),-->
+<!--        .section-title > span:nth-child(2),-->
+<!--        .section-title > span:nth-child(3) {-->
+<!--            background-color: #616161;-->
+<!--        }-->
+
+<!--        .square-rounded {-->
+<!--            width: 160px;-->
+<!--            height: 220px;-->
+<!--            object-fit: cover;-->
+<!--            border-radius: 20px;-->
+<!--            margin-bottom: 10px;-->
+<!--            margin-top: 10px;-->
+<!--        }-->
+
+<!--        .company-info {-->
+<!--            color: yellow;-->
+<!--            font-size: 1em;-->
+<!--            margin-bottom: 4px;-->
+<!--            border: 2px solid #4D8B31;-->
+<!--            margin-left: 2px;-->
+<!--        }-->
+
+<!--        .skills, .languages {-->
+<!--            display: flex;-->
+<!--            flex-wrap: wrap;-->
+<!--            gap: 10px;-->
+<!--        }-->
+
+<!--        .skill, .language {-->
+<!--            background: #4D4D4D;-->
+<!--            padding: 5px 10px;-->
+<!--            border-radius: 5px;-->
+<!--        }-->
+
+<!--        .project {-->
+<!--            margin-bottom: 15px;-->
+<!--        }-->
+
+<!--        .link-style {-->
+<!--            color: blue;-->
+<!--            text-decoration: underline;-->
+<!--        }-->
+
+<!--        .link-style > a {-->
+<!--            font-weight: 550;-->
+<!--        }-->
+
+<!--        .education {-->
+<!--            font-weight: 550;-->
+<!--            text-decoration: underline;-->
+<!--            padding: 7px 0px;-->
+<!--            font-size: 1.2rem;-->
+<!--        }-->
+
+<!--        .flex-direction-row {-->
+<!--            display: flex;-->
+<!--            justify-content: space-between;-->
+<!--            align-items: center;-->
+<!--        }-->
+
+<!--        .flex-direction-column {-->
+<!--            display: flex;-->
+<!--            flex-direction: column;-->
+<!--        }-->
+
+<!--        .more-text {-->
+<!--            /*display: none;*/-->
+<!--        }-->
+
+<!--        .large-green-title {-->
+<!--            font-size: 1.2em; /* Adjust as needed */-->
+<!--            color: #4D8B31; /* British Racing Green */-->
+<!--            font-weight: bold; /* Make the text bold */-->
+<!--            text-decoration: underline; /* Underline the text */-->
+<!--        }-->
+
+<!--        .link-style-show-more {-->
+<!--            margin-bottom: 1rem; /* This will add a space of 1rem below your h3 element */-->
+<!--        }-->
+<!--        .hidden {-->
+<!--            display: none;-->
+<!--        }-->
+<!--        .margin-bottom {-->
+<!--            margin-bottom: 1rem;-->
+<!--        }-->
+<!--        .flex-direction-column1 {-->
+<!--            display: flex;-->
+<!--            flex-direction: column;-->
+<!--            align-items: center;-->
+<!--            justify-content: center;-->
+<!--            margin-bottom: 1rem;-->
+<!--        }-->
+<!--        #enlarged-text > p {-->
+<!--            /*font-size: 150%; !* increasing the font size by 30% *!*/-->
+<!--            color: black;-->
+<!--            background-color: #616161;-->
+<!--            margin-bottom: 2px;-->
+<!--            padding: 2px 8px;-->
+<!--            border-radius: 7px;-->
+
+<!--        /*}*/-->
+<!--        .two-columns {-->
+<!--            display: grid;-->
+<!--            grid-template-columns: repeat(2, minmax(20em, 1fr));-->
+<!--            grid-auto-rows: calc(100% / 5);-->
+<!--            grid-gap: 1em;-->
+<!--        }-->
+
+<!--        .two-columns li:nth-child(4n+1) {-->
+<!--            grid-column: 1;-->
+<!--        }-->
+
+
+<!--        #enlarged-text {-->
+<!--            align-items: center;-->
+<!--            background-color: #4D4D4D; /* dark grayscale */-->
+<!--            color: white;  /* white text color */-->
+<!--            padding: 8px 12px;-->
+<!--            border-radius: 20px;-->
+<!--            width: 350px;-->
+<!--            margin: 10px 0;  /* top and bottom margin of 5px, left and right margin of 0 */-->
+<!--        }-->
+<!--        .degreetype {-->
+<!--            font-weight: normal;-->
+<!--            font-size: 1rem;-->
+<!--            color: white;-->
+<!--        }-->
+
+<!--        /* For screens smaller than or equal to 600px */-->
+<!--        @media only screen and (max-width: 600px) {-->
+<!--          .container {-->
+<!--            flex-direction: column;-->
+<!--            margin: 0; /* overwrite the margin on small screens */-->
+<!--            padding: 0;  /* give some padding */-->
+<!--            border: none;-->
+<!--          }-->
+<!--          .left-column,-->
+<!--          .right-column {-->
+<!--            flex: none;-->
+<!--            width: 100%;-->
+<!--            padding-left: 0px;-->
+<!--          }-->
+<!--          #enlarged-text {-->
+<!--              background-color: black;-->
+<!--          }-->
+<!--        }-->
+
+<!--        /* For screens smaller than or equal to 480px */-->
+<!--        @media only screen and (max-width: 480px) {-->
+<!--          .container {-->
+<!--            flex-direction: column;-->
+<!--            margin: 0;-->
+<!--            padding: 0; /* adjust as needed */-->
+<!--            border: none;-->
+<!--          }-->
+<!--          .left-column,-->
+<!--          .right-column {-->
+<!--            flex: none;-->
+<!--            width: 100%;-->
+<!--            padding-left: 0px;-->
+<!--          }-->
+<!--          .square-rounded { /* Your existing image class */-->
+<!--            transform: scale(0.8);  /* makes the image 20% smaller in both width and height */-->
+<!--          }-->
+<!--          #enlarged-text {-->
+<!--              background-color: black;-->
+<!--          }-->
+<!--        }-->
+
+<!--        @media only screen and (max-width: 782px) {-->
+<!--        .container {-->
+<!--            border: none;-->
+<!--            padding: 0;-->
+<!--        }-->
+<!--    }-->
+<!--    </style>-->
+</head>
+<body>
+<div class="container">
+
+    <div class="left-column">
+        <div class="header flex-direction-column">
+            <div class="flex-direction-column1 margin-bottom">
+                <h1>Vasil Filkin</h1>
+                <img  src="./c1bf0922-e232-4e4a-ab5d-55c5b7c5168c.jfif" alt=""
+                     class="square-rounded">
+            </div>
+            <div id="enlarged-text">
+                <p>1912filkin@gmail.com</p>
+                <p>+359883950900</p>
+                <p>Sofia/Plovdiv, Bulgaria</p>
+                <p class="link-style"><a href="https://www.linkedin.com/in/vasil-filkin-b75435261/"
+                                         class="">LinkedIn</a></p>
+                <p class="link-style"><a href="https://github.com/filkin1912" class="">GitHub</a></p>
+            </div>
+        </div>
+
+
+        <div class="section-title">SKILLS</div>
+        <div class="skills">
+            <span class="skill">Python</span>
+            <span class="skill">Django</span>
+            <span class="skill">HTML5</span>
+            <span class="skill">CSS3</span>
+            <span class="skill">WordPress</span>
+            <span class="skill">Bootstrap</span>
+            <span class="skill">Docker</span>
+            <span class="skill">PostgreSQL</span>
+            <span class="skill">React</span>
+            <span class="skill">JavaScript</span>
+        </div>
+
+        <div class="section-title">LANGUAGES</div>
+        <div class="languages">
+            <span class="language">Bulgarian Native</span>
+            <span class="language">English C1</span>
+            <span class="language">German C1</span>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <div class="section-title">EDUCATION</div>
+        <h3 class="education large-green-title">Python Web Developer</h3>
+        <p>Software University, Sofia, Bulgaria</p>
+            <table class="two-columns">
+                <tr>
+                    <td>
+<!--                        <ul>-->
+<!--                            <li class="link-style">-->
+<!--                                <a href="https://drive.google.com/file/d/1fnTKSaKvvs5qhIYDByQECPuZFY6fg8gS/view?usp=drive_link"-->
+<!--                                   class=" underline">Programming Basics</a>-->
+<!--                            </li>-->
+<!--                            <li class="link-style">-->
+<!--                                <a href="https://drive.google.com/file/d/10ArqbJGd4Rj3DobYNoyAu_PZJGnz-YBH/view?usp=drive_link"-->
+<!--                                   class=" underline">Programming Fundamentals</a>-->
+<!--                            </li>-->
+<!--                            <li class="link-style">-->
+<!--                                <a href="https://drive.google.com/file/d/1-kE4G1MuSomybTYFSPmEaiRuVRw45QAb/view?usp=drive_link"-->
+<!--                                   class=" underline">Python Advanced</a>-->
+<!--                            </li>-->
+<!--                            <li class="link-style">-->
+<!--                                <a href="https://drive.google.com/file/d/1ObROm85JI57nssz5Eer45sEXbNt2d1DG/view?usp=drive_link"-->
+<!--                                   class=" underline">Python OOP</a>-->
+<!--                            </li>-->
+<!--                            <li class="link-style">-->
+<!--                                <a href="https://drive.google.com/file/d/16J-2DvqhTb0rJsSOj7jTIAgnokhJw15-/view?usp=drive_link"-->
+<!--                                   class=" underline">Python Web Basics</a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+                    </td>
+                        <li class="link-style">
+                            <a href="https://drive.google.com/file/d/1Wr1Lpcxm6FRyjMPzgxu5TwyDV1Ns8cRh/view?usp=sharing"
+                               class=" underline">Software Engineer with Python</a>
+                        </li>
+                    <td>
+<!--                        <ul>-->
+<!--                            <li class="link-style">-->
+<!--                                <a href="https://drive.google.com/file/d/1sAHtVzv8q5zznIuu8IABtPnf36yUzDUv/view?usp=drive_link"-->
+<!--                                   class=" underline">Python Web Framework</a>-->
+<!--                            </li>-->
+<!--                            <li class="link-style">-->
+<!--                                <a href="https://drive.google.com/file/d/11fPpqXl3ABM04Nnq7yME-WvEgebIfreE/view?usp=drive_link"-->
+<!--                                   class=" underline">HTML & CSS</a>-->
+<!--                            </li>-->
+<!--                            <li class="link-style">-->
+<!--                                <a href="https://drive.google.com/file/d/1TO05eVB3MQMDEPUgS7l2QEj1vaZApKzc/view?usp=drive_link"-->
+<!--                                   class=" underline">JavaScript Front End</a>-->
+<!--                            </li>-->
+<!--                            <li class="link-style">-->
+<!--                                <a href="https://drive.google.com/file/d/1gVWIpB9XO0TrK9gVp2lZzYYqqeNz-jXW/view?usp=drive_link"-->
+<!--                                   class=" underline">React</a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+                    </td>
+                </tr>
+            </table>
+
+        <h3 class="education large-green-title">Finance Management <span class="degreetype">(master's degree)</span></h3>
+        <p>UNWE University of National and World Economy, Sofia, Bulgaria </p>
+        <h3 class="education large-green-title">Macroeconomics <span class="degreetype">(bachelor's degree)</span></h3>
+        <p>UNWE University of National and World Economy, Sofia, Bulgaria </p>
+
+
+
+<!--        WORKING EXPERIENCE-->
+        <div class="section-title">WORK EXPERIENCE</div>
+        <div class="section-content">
+            <div class="section-content">
+                <h3 class="large-green-title">Airbnb Support Ambassador</h3>
+                <p class="collapse-content"><p class="company-info">Telus International, Sofia | August 2024 – August 2025</p>
+                    Provide customer support to hosts and guests from German-speaking countries, ensuring a seamless
+                    experience on the Airbnb platform
+                    <span class="more-text">Assist new hosts with onboarding, listing setup, and optimization, offering
+                        personalized advice on pricing, property presentation, and guest communication.
+                        Resolve inquiries related to bookings, guest interactions, technical issues, and platform
+                        navigation.
+                        Guide hosts on best practices, helping them understand Airbnb policies and local regulations to
+                        enhance guest satisfaction and improve reviews.
+                        Collaborate with internal teams to escalate and resolve complex cases, ensuring high-quality
+                        support for both hosts and guests.</span>
+                </p>
+<!--                <h3 class="link-style-show-more"><a class="morelink " href="#">Show More</a></h3>-->
+            </div>
+
+            <div class="section-content">
+                <h3 class="large-green-title">Speditor international transoprt</h3>
+                <p class="collapse-content"><p class="company-info">B&O East Sea Trucks, Sofia | January 2019 - September 2023</p>
+                    Operating a fleet of 20 trucks traversing Central Europe,
+                    <span class="more-text">my responsibilities span across various countries including Germany, Austria,
+                        Italy, Switzerland, and the Czech Republic.
+                        My primary obligations involve direct communication with European-based logistics companies,
+                        meticulous planning for both loading and unloading schedules along with daily driving instructions,
+                        and effectively managing weekend break schedules. I am also responsible for consistently tracking
+                        various elements such as traffic, current and expected road bans, tonnage composition, pallet
+                        changes for appropriate documentation, and other vital factors contributing to operation efficiency.
+                        Additionally, I am in charge of procuring loads from or to Bulgaria through the Speditor.net
+                        platform, coordinating any required truck servicing, liaising with the police and warehouses to
+                        troubleshoot and resolve any issues, all while ensuring effective communication in English and
+                        German.Upon completion of the aforementioned tasks, I meticulously compile comprehensive reports
+                        of the routes and issue credit notes to the clients, duly attached with relevant
+                        Consignment Notes (CMRs).</span>
+                </p>
+<!--                <h3 class="link-style-show-more"><a class="morelink " href="#">Show More</a></h3>-->
+            </div>
+
+            <div class="section-content">
+<!--                <h3 class="large-green-title">Dispatcher international transoprt</h3>-->
+<!--                <p class="collapse-content"><p class="company-info">Hager transport, Plovdiv | September 2018 - November 2018</p>-->
+<!--                    Managing an active fleet of 15 trucks,-->
+<!--                    <span class="more-text">my primary responsibilities encompass allocating truck orders, ensuring-->
+<!--                        proper tracking, and providing daily instructions for-->
+<!--                        efficient operations. This extends to creating effective road plans and offering the drivers-->
+<!--                        advice on current traffic scenarios.-->
+<!--                        Much of our freight comprises groupage shipments, predominantly distributed between Germany,-->
+<!--                        Switzerland, and Italy. My role necessitates overseeing the loading and unloading processes at-->
+<!--                        stations, troubleshooting problems as they arise, and verifying the correctness of loadings-->
+<!--                        post-process with drivers.-->
+<!--                        Through continuous interaction with clients and drivers alike, I facilitate smooth operations-->
+<!--                        and maintain a clear channel of communication to mitigate potential issues and ensure the smooth-->
+<!--                        delivery of our services.</span>-->
+<!--                </p>-->
+<!--                <h3 class="link-style-show-more"><a class="morelink " href="#">Show More</a></h3>-->
+            </div>
+
+            <div class="section-content">
+<!--                <h3 class="large-green-title">Specialist transport planning and organisation</h3>-->
+<!--                <p class="collapse-content"><p class="company-info">EHD Trans, Sofia | January 2017 - May 2018</p>-->
+<!--                    The company exclusively conducts its operations within Western Europe,-->
+<!--                    <span class="more-text"> primarily focussing on the transportation of air cargo as a subcontractor-->
+<!--                        to other major transport companies such as Euro Cargo, H.Essers, Wallenborn, among others.-->
+<!--                        My key responsibilities include cargo handling, daily planning, cargo tracking, as well as-->
+<!--                        communicating effectively with drivers.-->
+<!--                        I am also in charge of updating daily and weekly pauses in our dedicated transport software,-->
+<!--                        Talis. My role involves frequent communication with our customers: through phone and email-->
+<!--                        channels, I address their queries while also reporting timelines. My communication proficiency-->
+<!--                        both in English and German ensures smooth and efficient coordination of these-->
+<!--                        responsibilities.</span>-->
+<!--                </p>-->
+<!--                <h3 class="link-style-show-more"><a class="morelink " href="#">Show More</a></h3>-->
+            </div>
+        </div>
+
+
+
+<!--        PERSONAL PROJECTS PART-->
+        <div class="section-title">PERSONAL PROJECTS</div>
+
+
+<!--        DJANGO PROJECT-->
+            <div class="section-content">
+                <h3 class="link-style">
+                    <a class="" href="https://github.com/filkin1912/django-project">
+                        Django Project
+                    </a>
+                </h3>
+
+                <p>Web application - online store for computer games. Django project with DTL.
+                <p class="collapse-content">
+                <span class="more-text">
+                    This is a React web application for an online store selling computer games. Users must register to
+                    buy or sell games. The store has two parts: a public catalog (home page) showing all games for sale,
+                    with a search bar to filter by title, and a private area where users manage their owned games, wallet
+                    balance, and profile (including profile image). Selling a game credits the seller’s wallet, while
+                    buying deducts funds. Users can leave comments on games (one per user per game) and delete their own.
+                    The app includes alert messages for feedback, route guards for secure access, and local storage for
+                    logged‑in user persistence.</span>
+                </p>
+<!--                <h3 class="link-style-show-more"><a class="morelink " href="#">Show More</a></h3>-->
+            </div>
+
+
+<!--        REACT PROJECT-->
+            <div class="section-content">
+                <h3 class="link-style">
+                    <a class="" href="https://github.com/filkin1912/reactJS_exam_2025">
+                        React Project</a>
+                </h3>
+                <p>Web application - online store for computer games. React project.
+
+                <p class="collapse-content">
+                    <span class="more-text">To buy or sell games, you have to
+                register a user. The store has two parts - private and public. The private part consists of bought or
+                owned games that every user has. The 'Catalog' page is where all selling games can be seen, and this
+                page is public. Every registered user has a bill and can add money, so they can buy games from the
+                store, or if they are selling a game, the price of a sold game will be added to this bill. Also, every
+                user can upload a profile image to their account and edit their profile data. The Catalog page has a
+                search bar where you can find a game by a specific word. The home page represents the last added games.
+                There are route guards added at some URLs, and local storage is used for logged user data
+                    persistence.</span>
+                </p>
+<!--                <h3 class="link-style-show-more"><a class="morelink " href="#">Show More</a></h3>-->
+            </div>
+    </div>
+</div>
+<script>window.parent.postMessage({action: "ready"}, "*");
+
+window.console = new Proxy(console, {
+    get(target, prop) {
+        if (['log', 'warn', 'error'].includes(prop)) {
+            return new Proxy(target[prop], {
+                apply(fn, thisArg, args) {
+                    fn.apply(thisArg, args);
+                    window.parent.postMessage({
+                        action: 'console',
+                        type: prop,
+                        args: args.map((arg) => {
+                            try {
+                                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+                            } catch (e) {
+                                return arg;
+                            }
+                        })
+                    }, '*');
+                }
+            });
+        }
+        return target[prop];
+    }
+});
+</script>
+<script>
+$(document).ready(function () {
+    var showText = "Show More";
+    var hideText = "Show Less";
+
+    $(".morelink").click(function () {
+        var moreLink = $(this);
+        var moreTextSection = moreLink.parent().prev().find('.more-text');
+
+        if (moreLink.text() === showText) {
+            $('.morelink').each(function () {
+                $(this).text(showText);
+                $(this).parent().prev().find('.more-text').slideUp();
+            });
+            moreLink.text(hideText);
+            moreTextSection.slideToggle();
+        } else {
+            moreLink.text(showText);
+            moreTextSection.slideToggle();
+        }
+        return false;
+    });
+});
+</script>
+<script>
+function showMore(element) {
+    const moreText = element.parentNode.previousSibling.previousSibling;
+    const shortText = moreText.previousSibling.previousSibling;
+    if (moreText.style.display === "none") {
+        moreText.style.display = "block";
+        shortText.style.display = "none";
+        element.innerText = "Show Less";
+    } else {
+        moreText.style.display = "none";
+        shortText.style.display = "block";
+        element.innerText = "Show More";
+    }
+}
+</script>
+</body>
+</html>
