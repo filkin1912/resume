@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vasil Filkin Resume</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* ===========================
+           GLOBAL BASE STYLES
+           =========================== */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #333;
+            color: #333;
+            font-weight: 400;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        body * {
+            color: inherit;
+            box-sizing: border-box;
+        }
+
+        /* ===========================
+           MAIN CONTAINER
+           =========================== */
+        .container {
+            max-width: 1240px !important;
+            width: 100%;
+            margin: 0 auto;
+            padding: 1px;
+            background-color: #e1d0d0;
+            border: 1px solid #333;
+            border-radius: 3px;
+            display: flex;
+            gap: 20px;
+        }
+
+        /* ===========================
+           LEFT COLUMN (PREMIUM GRADIENT)
+           =========================== */
+        .left-column {
+            flex: 0 0 18%;
+            min-width: 20%;
+            padding: 20px 10px;
+            border-right: 2px solid #ccc;
+            background: linear-gradient(
+                    to bottom,
+                    #1a1a1a 0%,
+                    #222 25%,
+                    #2b2b2b 45%,
+                    #355c2a 70%,
+                    #4D8B31 100%
+            );
+            color: white;
+            border-radius: 3px;
+        }
+
+        .left-column * {
+            color: #f1dfdf !important;
+        }
+
+        /* ===========================
+           RIGHT COLUMN
+           =========================== */
+        .right-column {
+            flex: 0 0 78%;
+            max-width: 78%;
+            background-color: #e1d0d0;
+            font-size: 1rem;
+            line-height: 1.55;
+            color: #2b2b2b;
+        }
+
+        .right-column p {
+            margin: 0 0 10px 0;
+        }
+
+        .right-column li {
+            margin-bottom: 6px;
+        }
+
+        /* force margin for special paragraphs */
+        .right-column p.section-content-paragraph {
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 8px;
+            padding-left: 2px;
+        }
+
+        /* ===========================
+           SECTION CONTENT
+           =========================== */
+        .section-content {
+            margin-top: 25px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        /* keep class in case it's used on non-p elements */
+        .section-content-paragraph {
+            display: block;
+        }
+
+        /* ===========================
+           SECTION TITLES + DIVIDERS
+           =========================== */
+        .section-title {
+            font-size: 1.62em;
+            font-weight: 700;
+            margin-top: 28px;
+            margin-bottom: 0px;
+            color: #222;
+            letter-spacing: 0.3px;
+            position: relative;
+            padding-bottom: 0px;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 99%;
+            height: 3px;
+            background: rgba(0, 0, 0, 0.15);
+        }
+
+        /* ===========================
+           HEADER — STACK NAME, IMAGE, CONTACT
+           =========================== */
+        .header.flex-direction-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 14px;
+            margin-bottom: 1rem;
+        }
+
+        /* ===========================
+           NAME STYLING
+           =========================== */
+        .header.flex-direction-column h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 0;
+        }
+
+        /* ===========================
+           PHOTO
+           =========================== */
+        .square-rounded {
+            width: 202px;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+
+        /* ===========================
+           CONTACT BLOCK
+           =========================== */
+        #enlarged-text {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px 12px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        /* ===========================
+           CONTACT ROWS (WITH ICONS)
+           =========================== */
+        .contact-line {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: rgba(255, 255, 255, 0.12);
+            padding: 6px 10px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+
+        .contact-icon {
+            font-size: 115%;
+            width: 22px;
+            text-align: center;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        .contact-label {
+            font-weight: 700;
+            font-size: 105%;
+            color: #ffffff !important;
+        }
+
+        .contact-value {
+            font-size: 95%;
+            color: #ffffff !important;
+        }
+
+
+        /* ===========================
+           SOCIAL MEDIA
+           =========================== */
+        .social-title {
+            margin-top: 12px;
+            margin-bottom: 4px;
+            font-size: 110%;
+        }
+
+        #enlarged-text > p {
+            background-color: rgba(255, 255, 255, 0.15);
+            margin-bottom: 4px;
+            padding: 4px 8px;
+            border-radius: 3px;
+            text-align: left;
+            min-width: 224px;
+            width: 100%;
+        }
+
+        .social-button {
+            width: 100%;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .social-button a {
+            display: inline-flex;
+            background-color: #1a73e8;
+            color: #fff !important;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 2px 10px;
+            border-radius: 3px;
+            border: 1px solid darkgray;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-button a:hover {
+            background-color: #155bb5;
+        }
+
+        .social-icon {
+            margin-right: 6px;
+            font-size: 110%;
+            vertical-align: middle;
+        }
+
+        /* ===========================
+           LINKS
+           =========================== */
+        .link-style {
+            color: #1a73e8 !important;
+            text-decoration: underline;
+        }
+
+        .link-style > a {
+            font-weight: 550;
+            color: #1a73e8 !important;
+        }
+
+        .social-icon {
+            margin-right: 6px;
+            font-size: 110%;
+            vertical-align: middle;
+        }
+
+
+        /* ===========================
+           DIPLOMA SPACING
+           =========================== */
+        .diploma {
+            margin-top: -15px;
+        }
+
+        .diploma-icon {
+            margin-right: 6px;
+            font-size: 110%;
+            vertical-align: middle;
+        }
+
+
+        /* ===========================
+           SKILLS & LANGUAGES
+           =========================== */
+        .skills, .languages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill, .language {
+            background: #4b4b4b;
+            padding: 5px 10px;
+            border-radius: 3px;
+            border: 1px solid darkgray;
+            color: #333;
+        }
+
+        /* ===========================
+           EDUCATION & EXPERIENCE
+           =========================== */
+        .education {
+            font-weight: 600;
+            text-decoration: underline;
+            padding: 2px 0;
+            font-size: 1.2rem;
+            margin: 2px 0;
+            line-height: 1.2;
+        }
+
+        .degreetype {
+            font-weight: normal;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .company-info {
+            color: #333;
+            font-style: italic;
+            font-size: 1.1em;
+            margin-bottom: 4px;
+            border-left: 4px solid #4D8B31;
+            padding-left: 6px;
+            font-weight: bold;
+        }
+
+        /* ===========================
+           GRID FOR CERTIFICATES
+           =========================== */
+        .two-columns {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(20em, 1fr));
+            grid-gap: 1em;
+        }
+
+        .two-columns td {
+            padding-right: 20px;
+        }
+
+        .two-columns li:nth-child(4n+1) {
+            grid-column: 1;
+        }
+
+        /* ===========================
+           PROJECTS
+           =========================== */
+        .project {
+            margin-bottom: 15px;
+        }
+
+        .large-green-title {
+            font-size: 1.2em;
+            color: #366122;
+            font-weight: bold;
+            text-decoration: underline;
+            margin-top: 18px;
+        }
+
+        /* ===========================
+           PROJECT BUTTONS
+           =========================== */
+        .project-button {
+            width: 100%;
+            margin: 12px 0;
+            text-align: left; /* or center if you prefer */
+        }
+
+        .project-button a {
+            display: inline-block;
+            background-color: #1a73e8;
+            color: #fff !important;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 2px 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s ease;
+        }
+
+        .project-button a:hover {
+            background-color: #155bb5;
+        }
+
+
+        /* ===========================
+           RESPONSIVE BEHAVIOR
+           =========================== */
+        @media only screen and (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                max-width: 100%;
+                padding: 16px;
+            }
+
+            .left-column,
+            .right-column {
+                max-width: 100%;
+                flex: none;
+                border-right: none;
+                padding: 0;
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            .square-rounded {
+                transform: scale(0.85);
+            }
+        }
+
+        /* ===========================
+           PRINT OPTIMIZATION
+           =========================== */
+        @media print {
+            body {
+                background: white;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .container {
+                max-width: 1240px;
+                width: 100%;
+                margin: 0 auto;
+                padding: 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            @page {
+                size: A4;
+                margin: 0;
+            }
+
+            .section-content,
+            .left-column,
+            .right-column,
+            .header {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+
+
+</head>
+<body>
+<div class="container">
+
+    <div class="left-column">
+        <div class="header flex-direction-column">
+
+            <div class="flex-direction-column1 margin-bottom">
+                <h1 class="my-name">Vasil Filkin</h1>
+                <img src="c1bf0922-e232-4e4a-ab5d-55c5b7c5168c.jfif" alt=""
+                     class="square-rounded">
+            </div>
+            <div id="enlarged-text">
+
+                <p class="contact-line">
+                  <span class="contact-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                  </span>
+                  <span class="contact-value">1912filkin@gmail.com</span>
+                </p>
+
+                <p class="contact-line">
+                    <span class="contact-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1
+                             1 0 0 1 1 1V21a1 1 0 0 1-1 1C10.07 22 2 13.93 2 3a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57
+                             3.58a1 1 0 0 1-.24 1.01l-2.21 2.2z"/>
+                        </svg>
+                    </span>
+                    <span class="contact-value">+359883950900</span>
+                </p>
+
+                <p class="contact-line">
+                      <span class="contact-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38
+                          0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
+                        </svg>
+                      </span>
+                      <span class="contact-value">Sofia, Bulgaria</span>
+                </p>
+
+
+                <p class="contact-label social-title">Social Media:</p>
+
+                <p class="social-button">
+                      <a href="https://www.linkedin.com/in/vasil-filkin-b75435261/">
+                        <span class="social-icon">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5
+                            8h4V24h-4V8zm7.5 0h3.8v2.2h.1c.5-.9 1.8-2.2 3.9-2.2 4.2 0 5 2.8 5 6.4V24h-4v-7.7c0-1.8 0-4.1-2.5-4.1s-2.9 2-2.9 4V24h-4V8z"/>
+                          </svg>
+                        </span>
+                        LinkedIn
+                      </a>
+                </p>
+
+
+                <p class="social-button">
+                    <a href="https://github.com/filkin1912">
+                        <span class="social-icon">
+                            <svg height="20" width="20" viewBox="0 0 16 16" aria-hidden="true">
+                                <path fill="currentColor"
+                                      d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29
+                                    6.53 5.47 7.59.4.07.55-.17.55-.38
+                                    0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52
+                                    -.01-.53.63-.01 1.08.58 1.23.82.72 1.21
+                                    1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78
+                                    -.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82
+                                    -2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21
+                                    2.2.82a7.65 7.65 0 0 1 2-.27c.68 0 1.36.09
+                                    2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16
+                                    1.92.08 2.12.51.56.82 1.27.82 2.15
+                                    0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54
+                                    1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013
+                                    8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z">
+                                </path>
+                            </svg>
+                        </span>GitHub
+                    </a>
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="section-title">SKILLS</div>
+        <div class="skills">
+            <span class="skill">Python</span>
+            <span class="skill">Django</span>
+            <span class="skill">DjangoREST</span>
+            <span class="skill">HTML5</span>
+            <span class="skill">CSS3</span>
+            <span class="skill">Docker</span>
+            <span class="skill">PostgreSQL</span>
+            <span class="skill">React</span>
+            <span class="skill">JavaScript</span>
+        </div>
+
+        <div class="section-title">LANGUAGES</div>
+        <div class="languages">
+            <span class="language">Bulgarian Native</span>
+            <span class="language">English C1</span>
+            <span class="language">German C1</span>
+        </div>
+    </div>
+
+    <div class="right-column">
+        <div class="section-title">EDUCATION</div>
+        <div class="section-content">
+            <div class="section-content">
+                <h3 class="education large-green-title">Python Web Developer</h3>
+                <p>Software University, Sofia, Bulgaria</p>
+
+
+                <div class="diploma link-style">
+                    <a href="https://drive.google.com/file/d/1Wr1Lpcxm6FRyjMPzgxu5TwyDV1Ns8cRh/view?usp=sharing"
+                       class="underline">
+                        <span class="diploma-icon">👉</span> Diploma - Software Engineer with Python
+                    </a>
+                </div>
+
+
+                <h3 class="education large-green-title">Finance Management <span
+                        class="degreetype">(master's degree)</span>
+                </h3>
+                <p>UNWE - Sofia, Bulgaria </p>
+                <h3 class="education large-green-title">Macroeconomics <span
+                        class="degreetype">(bachelor's degree)</span>
+                </h3>
+                <p>UNWE - Sofia, Bulgaria </p>
+            </div>
+        </div>
+
+        <!-- PERSONAL PROJECTS PART -->
+        <div class="section-title">PROJECTS</div>
+
+        <!-- FULL-STACK GAME STORE PROJECT -->
+        <div class="section-content">
+
+            <h3 class="project-button">
+                <a href="https://github.com/filkin1912/Full-stack-online-games-marketplace-Django-REST-React-">
+                    Online store for computer games (Full‑Stack)
+                </a>
+            </h3>
+
+            <div class="section-content">
+
+                <!-- BACKEND PART -->
+                <p class="section-content-paragraph">
+                    <strong><span class="social-icon"></span> Backend part – Django & Django REST Framework
+                        (PostgreSQL)</strong><br>
+                    The backend provides a complete REST API for authentication, game management, purchases, and wallet
+                    operations. It uses PostgreSQL for persistent storage and JWT authentication for secure access. All
+                    business
+                    logic—ownership rules, transactions, profile updates—is handled through Django REST endpoints.
+                </p>
+
+                <!-- FRONTEND PART -->
+                <p class="section-content-paragraph">
+                    <strong><span class="social-icon"></span> Frontend part – ReactJS Application</strong><br>
+                    The frontend is a ReactJS application that serves as the user interface of the online game store.
+                    It allows users to browse and search games, view details, manage their profile, upload images, add
+                    funds, and buy or sell games. The app uses protected routes for authenticated areas and relies on
+                    context providers and localStorage for state, authentication, and data persistence. It communicates
+                    with the Django REST API through a clean service layer.
+                </p>
+
+                <!-- DOCKER PART -->
+                <p class="section-content-paragraph">
+                    <strong>Dockerized Full‑Stack Setup</strong><br>
+                    The entire application is fully containerized. The backend, frontend, and PostgreSQL database are
+                    all packaged inside Docker images for complete transparency and easy inspection. The whole system
+                    can be launched in seconds using a single docker-compose.yml file, with a simple three‑step startup
+                    guide clearly documented in the attached README.
+                    <br><br>
+                </p>
+
+            </div>
+        </div>
+
+        <!--        WORKING EXPERIENCE-->
+        <div class="section-title">WORK EXPERIENCE</div>
+        <div class="section-content">
+            <div class="section-content">
+                <h3 class="large-green-title">Airbnb Support Ambassador</h3>
+
+                <p class="company-info">Telus International, Sofia | August 2024 – August 2025</p>
+                Provide customer support to hosts and guests from German-speaking countries, ensuring a seamless
+                experience on the Airbnb platform
+                <span class="more-text">Assist new hosts with onboarding, listing setup, and optimization, offering
+                        personalized advice on pricing, property presentation, and guest communication.
+                        Resolve inquiries related to bookings, guest interactions, technical issues, and platform
+                        navigation.
+                        Guide hosts on best practices, helping them understand Airbnb policies and local regulations to
+                        enhance guest satisfaction and improve reviews.
+                        Collaborate with internal teams to escalate and resolve complex cases, ensuring high-quality
+                        support for both hosts and guests.</span>
+
+            </div>
+
+            <div class="section-content">
+                <h3 class="large-green-title">Speditor international transoprt</h3>
+
+                <p class="company-info">B&O East Sea Trucks, Sofia | January 2019 - September 2023</p>
+                <span class="more-text">Operating a fleet of 20 trucks across Central Europe, I coordinated daily
+                    logistics, communicated with European transport companies, and planned loading/unloading schedules.
+                    I monitored traffic conditions, road restrictions, and documentation requirements to ensure smooth
+                    operations. My role also included securing new loads through Speditor.net, managing vehicle servicing,
+                    resolving issues with warehouses and authorities, and preparing route reports and credit notes, all
+                    while communicating effectively in English and German.</span>
+
+            </div>
+
+
+        </div>
+
+
+        <!--        &lt;!&ndash; PERSONAL PROJECTS PART &ndash;&gt;-->
+        <!--        <div class="section-title">PROJECTS</div>-->
+
+        <!--        &lt;!&ndash; FULL-STACK GAME STORE PROJECT &ndash;&gt;-->
+        <!--        <div class="section-content">-->
+
+        <!--            <h3 class="project-button">-->
+        <!--                <a href="https://github.com/filkin1912/Full-stack-online-games-marketplace-Django-REST-React-">-->
+        <!--                    <span class="social-icon">🎮</span> Online store for computer games (Full‑Stack)-->
+        <!--                </a>-->
+        <!--            </h3>-->
+
+        <!--            <div class="section-content">-->
+
+        <!--                &lt;!&ndash; BACKEND PART &ndash;&gt;-->
+        <!--                <p class="section-content-paragraph">-->
+        <!--                    <strong><span class="social-icon">🐍</span> Backend – Django & Django REST Framework-->
+        <!--                        (PostgreSQL)</strong><br>-->
+        <!--                    The backend provides a complete REST API for authentication, game management, purchases, and wallet-->
+        <!--                    operations. It uses PostgreSQL for persistent storage and JWT authentication for secure access. All-->
+        <!--                    business-->
+        <!--                    logic—ownership rules, transactions, profile updates—is handled through Django REST endpoints.-->
+        <!--                </p>-->
+
+        <!--                &lt;!&ndash; FRONTEND PART &ndash;&gt;-->
+        <!--                <p class="section-content-paragraph">-->
+        <!--                    <strong><span class="social-icon">⚛️</span> Frontend – ReactJS Application</strong><br>-->
+        <!--                    The frontend is a ReactJS application that serves as the user interface of the online game store.-->
+        <!--                    It allows users to browse and search games, view details, manage their profile, upload images, add-->
+        <!--                    funds, and buy or sell games. The app uses protected routes for authenticated areas and relies on-->
+        <!--                    context providers and localStorage for state, authentication, and data persistence. It communicates-->
+        <!--                    with the Django REST API through a clean service layer.-->
+        <!--                </p>-->
+
+        <!--                &lt;!&ndash; DOCKER PART &ndash;&gt;-->
+        <!--                <p class="section-content-paragraph">-->
+        <!--                    <strong>Dockerized Full‑Stack Setup</strong><br>-->
+        <!--                    The entire application is fully containerized. The backend, frontend, and PostgreSQL database are-->
+        <!--                    all packaged inside Docker images for complete transparency and easy inspection. The whole system-->
+        <!--                    can be launched in seconds using a single docker-compose.yml file, with a simple three‑step startup-->
+        <!--                    guide clearly documented in the attached README.-->
+        <!--                    <br><br>-->
+        <!--                </p>-->
+
+        <!--            </div>-->
+        <!--        </div>-->
+
+    </div>
+</div>
+
+</body>
+</html>
